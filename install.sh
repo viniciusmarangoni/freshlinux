@@ -58,9 +58,6 @@ arch_linux_install(){
     pacaur -S autojump --needed --noconfirm
     pacaur -S nmap --needed --noconfirm    
 
-
-
-
     printf "${GREEN}Should install GUI dependent packages? [y/N]: ${NC}"
     read ans
     ans=${ans:-N}
