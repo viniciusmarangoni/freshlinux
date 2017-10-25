@@ -51,6 +51,7 @@ arch_linux_install(){
     fi
     
     pacaur -S base-devel --needed --noconfirm
+    pacaur -S tree --needed --noconfirm
     pacaur -S git python2-pip --needed --noconfirm
     pacaur -S yadm-git --needed --noconfirm
     pacaur -S tmux --needed --noconfirm
@@ -77,6 +78,7 @@ ubuntu_linux_install(){
     sudo apt update && sudo apt upgrade -y
     sudo apt install curl wget vim-gtk -y
     sudo apt install build-essential -y
+    sudo apt install tree -y
     sudo apt install git python-pip
     sudo apt install tmux -y
     #pacaur -S yadm-git --needed --noconfirm
@@ -94,6 +96,7 @@ ubuntu_linux_install(){
 
 dotfiles_install(){
     yadm clone https://github.com/viniciusmarangoni/dotfiles
+    yadm reset --hard origin/master
     yadm status
 }
 
