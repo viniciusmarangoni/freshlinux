@@ -114,6 +114,8 @@ fi
 
 if [ "$NAME" = "Arch Linux" ]; then
     arch_linux_install
+elif [ "$NAME" = "Ubuntu" ]; then
+    ubuntu_linux_install
 fi
 
 dotfiles_install
