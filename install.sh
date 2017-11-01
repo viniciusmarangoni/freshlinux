@@ -72,6 +72,13 @@ ubuntu_linux_gui_dependent(){
     sudo apt install terminator -y
 }
 
+ubuntu_install_yadm(){
+    sudo apt install -y software-properties-common
+    sudo add-apt-repository -y ppa:flexiondotorg/yadm
+    sudo apt update
+    sudo apt -y install yadm
+}
+
 # Ubuntu Linux
 ubuntu_linux_install(){
     echo "[+] Updating..."
@@ -81,8 +88,8 @@ ubuntu_linux_install(){
     sudo apt install tree -y
     sudo apt install git python-pip
     sudo apt install tmux -y
-    #pacaur -S yadm-git --needed --noconfirm
-    install_tldr
+    ubuntu_install_yadm
+        install_tldr
     sudo apt install autojump -y
     sudo apt install nmap -y
     printf "${GREEN}Should install GUI dependent packages? [y/N]: ${NC}"
