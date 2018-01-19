@@ -124,7 +124,7 @@ if [ "$NAME" = "Arch Linux" ]; then
     arch_linux_install
 elif [ "$NAME" = "Ubuntu" ]; then
     ubuntu_linux_install
-else:
+else
     printf "${GREEN}Couldn't identify the distro. Shoould I consider a debian based distro? [y/N]: ${NC}"
     read ans
     ans=${ans:-N}
