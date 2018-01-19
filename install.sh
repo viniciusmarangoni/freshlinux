@@ -70,6 +70,7 @@ arch_linux_install(){
 
 ubuntu_linux_gui_dependent(){
     sudo apt install terminator -y
+    sudo apt install j4-dmenu-desktop
 }
 
 ubuntu_install_yadm(){
