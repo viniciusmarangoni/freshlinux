@@ -25,6 +25,14 @@ install_pacaur(){
     rm -r /tmp/pacaur_install 
 }
 
+
+download_i3_volume(){
+	mkdir ~/Tools
+	cd ~/Tools
+	git clone 
+	it clone https://github.com/hastinbe/i3-volume
+}
+
 install_tldr(){
     if [ ! -e /usr/local/bin/tldr ]; then
         echo "[+] Installing tldr..."
@@ -36,14 +44,20 @@ install_tldr(){
 }
 
 arch_linux_gui_dependent(){
-    pacaur -S terminator --needed --noconfirm
+    pacaur -S sublime-text-dev tilix flameshot --needed --noconfirm
+}
+
+arch_linux_i3(){
+    pacaur -S i3-wm i3blocks i3lock i3-gnome network-manager-applet playerctl notify-osd --needed --noconfirm
+    pacaur -S j4-dmenu-desktop --needed --noconfirm
+    download_i3_volume
 }
 
 # Arch Linux
 arch_linux_install(){
     echo "[+] Updating..."
     sudo pacman -Syu --noconfirm
-    sudo pacman -S curl wget gvim nano --needed --noconfirm
+    sudo pacman -S curl wget gvim nano git --needed --noconfirm
 
     if [ -z "$(pacman -Qs pacaur)" ]; then
         echo "[+] Installing pacaur..."
@@ -52,11 +66,9 @@ arch_linux_install(){
     
     pacaur -S base-devel --needed --noconfirm
     pacaur -S tree --needed --noconfirm
-    pacaur -S git python2-pip --needed --noconfirm
+    pacaur -S python2-pip --needed --noconfirm
     pacaur -S yadm-git --needed --noconfirm
-    pacaur -S tmux --needed --noconfirm
     install_tldr
-    pacaur -S autojump --needed --noconfirm
     pacaur -S nmap --needed --noconfirm    
 
     printf "${GREEN}Should install GUI dependent packages? [y/N]: ${NC}"
@@ -65,6 +77,14 @@ arch_linux_install(){
 
     if [ $ans = "y" -o $ans = "Y" ]; then
         arch_linux_gui_dependent
+    fi
+
+    printf "${GREEN}Should install i3wm and its dependencies? [y/N]: ${NC}"
+    read ans
+    ans=${ans:-N}
+
+    if [ $ans = "y" -o $ans = "Y" ]; then
+        arch_linux_i3
     fi
 }
 
